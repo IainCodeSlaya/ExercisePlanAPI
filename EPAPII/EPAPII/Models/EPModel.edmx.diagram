@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b3e9d49154f46be81acdccfb7af83ed" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Day" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Day_Workout" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Exercise" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Exercise_Body_Type" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Exercise_Plan" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Exercise_Plan_Day" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Exercise_Plan_Type" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Exercise_Set" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Exercise_Type" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Set" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Workout" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExercisePlanDBModel.Workout_Set" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Exercise___Day_I__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Day_Worko__Exerc__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Day_Worko__Worko__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Exercise___Exerc__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Exercise__Exerci__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Exercise__Exerci__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Exercise___Exerc__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Exercise___Exerc__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Exercise___Set_I__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Workout_S__Exerc__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="ExercisePlanDBModel.FK__Workout_S__Worko__5165187F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
