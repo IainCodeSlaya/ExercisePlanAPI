@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExercisePlanDBModelStoreContainer" CdmEntityContainer="ExercisePlanDBEntities">
+    <EntitySetMapping Name="Days">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Day">
+        <MappingFragment StoreEntitySet="Day">
+          <ScalarProperty Name="Day_ID" ColumnName="Day_ID" />
+          <ScalarProperty Name="Day_Type" ColumnName="Day_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Day_Workout">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Day_Workout">
+        <MappingFragment StoreEntitySet="Day_Workout">
+          <ScalarProperty Name="Day_Workout_ID" ColumnName="Day Workout_ID" />
+          <ScalarProperty Name="Workout_Set_ID" ColumnName="Workout_Set_ID" />
+          <ScalarProperty Name="Exercise_Plan_Day_ID" ColumnName="Exercise_Plan_Day_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercises">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Exercise">
+        <MappingFragment StoreEntitySet="Exercise">
+          <ScalarProperty Name="Exercise_ID" ColumnName="Exercise_ID" />
+          <ScalarProperty Name="Exercise_Name" ColumnName="Exercise_Name" />
+          <ScalarProperty Name="Exercise_Description" ColumnName="Exercise_Description" />
+          <ScalarProperty Name="Exercise_Type_ID" ColumnName="Exercise_Type_ID" />
+          <ScalarProperty Name="Exercise_Body_Type_ID" ColumnName="Exercise_Body_Type_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercise_Body_Type">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Exercise_Body_Type">
+        <MappingFragment StoreEntitySet="Exercise_Body_Type">
+          <ScalarProperty Name="Exercise_Body_Type_ID" ColumnName="Exercise_Body_Type_ID" />
+          <ScalarProperty Name="Exercise_Body_Desc" ColumnName="Exercise_Body_Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercise_Plan">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Exercise_Plan">
+        <MappingFragment StoreEntitySet="Exercise_Plan">
+          <ScalarProperty Name="Exercise_Plan_ID" ColumnName="Exercise_Plan_ID" />
+          <ScalarProperty Name="Exercise_Plan_Name" ColumnName="Exercise_Plan_Name" />
+          <ScalarProperty Name="Exercise_Plan_Type_ID" ColumnName="Exercise_Plan_Type_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercise_Plan_Day">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Exercise_Plan_Day">
+        <MappingFragment StoreEntitySet="Exercise_Plan_Day">
+          <ScalarProperty Name="Exercise_Plan_Day_ID" ColumnName="Exercise_Plan_Day_ID" />
+          <ScalarProperty Name="Exercise_Plan_ID" ColumnName="Exercise_Plan_ID" />
+          <ScalarProperty Name="Day_ID" ColumnName="Day_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercise_Plan_Type">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Exercise_Plan_Type">
+        <MappingFragment StoreEntitySet="Exercise_Plan_Type">
+          <ScalarProperty Name="Exercise_Plan_Type_ID" ColumnName="Exercise_Plan_Type_ID" />
+          <ScalarProperty Name="Plan_Type_Description" ColumnName="Plan_Type_Description" />
+          <ScalarProperty Name="Plan_Type_Price" ColumnName="Plan_Type_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercise_Set">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Exercise_Set">
+        <MappingFragment StoreEntitySet="Exercise_Set">
+          <ScalarProperty Name="Exercise_Set_ID" ColumnName="Exercise_Set_ID" />
+          <ScalarProperty Name="REP" ColumnName="REP" />
+          <ScalarProperty Name="Exercise_ID" ColumnName="Exercise_ID" />
+          <ScalarProperty Name="Set_ID" ColumnName="Set_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercise_Type">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Exercise_Type">
+        <MappingFragment StoreEntitySet="Exercise_Type">
+          <ScalarProperty Name="Exercise_Type_ID" ColumnName="Exercise_Type_ID" />
+          <ScalarProperty Name="Exercise_Type_Description" ColumnName="Exercise_Type_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sets">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Set">
+        <MappingFragment StoreEntitySet="Set">
+          <ScalarProperty Name="Set_ID" ColumnName="Set_ID" />
+          <ScalarProperty Name="Set_Name" ColumnName="Set_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workouts">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Workout">
+        <MappingFragment StoreEntitySet="Workout">
+          <ScalarProperty Name="Workout_ID" ColumnName="Workout_ID" />
+          <ScalarProperty Name="Workout_Number" ColumnName="Workout_Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workout_Set">
+      <EntityTypeMapping TypeName="ExercisePlanDBModel.Workout_Set">
+        <MappingFragment StoreEntitySet="Workout_Set">
+          <ScalarProperty Name="Workout_Set_ID" ColumnName="Workout_Set_ID" />
+          <ScalarProperty Name="Workout_ID" ColumnName="Workout_ID" />
+          <ScalarProperty Name="Exercise_Set_ID" ColumnName="Exercise_Set_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExercisePlanDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Day">
+    <Key>
+      <PropertyRef Name="Day_ID" />
+    </Key>
+    <Property Name="Day_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Day_Type" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Exercise_Plan_Day" Relationship="Self.FK__Exercise___Day_I__3F466844" FromRole="Day" ToRole="Exercise_Plan_Day" />
+  </EntityType>
+  <EntityType Name="Day_Workout">
+    <Key>
+      <PropertyRef Name="Day_Workout_ID" />
+    </Key>
+    <Property Name="Day_Workout_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Workout_Set_ID" Type="Int32" Nullable="false" />
+    <Property Name="Exercise_Plan_Day_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Exercise_Plan_Day" Relationship="Self.FK__Day_Worko__Exerc__5629CD9C" FromRole="Day_Workout" ToRole="Exercise_Plan_Day" />
+    <NavigationProperty Name="Workout_Set" Relationship="Self.FK__Day_Worko__Worko__5535A963" FromRole="Day_Workout" ToRole="Workout_Set" />
+  </EntityType>
+  <EntityType Name="Exercise">
+    <Key>
+      <PropertyRef Name="Exercise_ID" />
+    </Key>
+    <Property Name="Exercise_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Exercise_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Exercise_Description" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Exercise_Type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Exercise_Body_Type_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Exercise_Set" Relationship="Self.FK__Exercise___Exerc__4D94879B" FromRole="Exercise" ToRole="Exercise_Set" />
+    <NavigationProperty Name="Exercise_Type" Relationship="Self.FK__Exercise__Exerci__47DBAE45" FromRole="Exercise" ToRole="Exercise_Type" />
+    <NavigationProperty Name="Exercise_Body_Type" Relationship="Self.FK__Exercise__Exerci__48CFD27E" FromRole="Exercise" ToRole="Exercise_Body_Type" />
+  </EntityType>
+  <EntityType Name="Exercise_Body_Type">
+    <Key>
+      <PropertyRef Name="Exercise_Body_Type_ID" />
+    </Key>
+    <Property Name="Exercise_Body_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Exercise_Body_Desc" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Exercises" Relationship="Self.FK__Exercise__Exerci__48CFD27E" FromRole="Exercise_Body_Type" ToRole="Exercise" />
+  </EntityType>
+  <EntityType Name="Exercise_Plan">
+    <Key>
+      <PropertyRef Name="Exercise_Plan_ID" />
+    </Key>
+    <Property Name="Exercise_Plan_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Exercise_Plan_Name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Exercise_Plan_Type_ID" Type="Int32" />
+    <NavigationProperty Name="Exercise_Plan_Type" Relationship="Self.FK__Exercise___Exerc__398D8EEE" FromRole="Exercise_Plan" ToRole="Exercise_Plan_Type" />
+    <NavigationProperty Name="Exercise_Plan_Day" Relationship="Self.FK__Exercise___Exerc__3E52440B" FromRole="Exercise_Plan" ToRole="Exercise_Plan_Day" />
+  </EntityType>
+  <EntityType Name="Exercise_Plan_Day">
+    <Key>
+      <PropertyRef Name="Exercise_Plan_Day_ID" />
+    </Key>
+    <Property Name="Exercise_Plan_Day_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Exercise_Plan_ID" Type="Int32" Nullable="false" />
+    <Property Name="Day_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Day" Relationship="Self.FK__Exercise___Day_I__3F466844" FromRole="Exercise_Plan_Day" ToRole="Day" />
+    <NavigationProperty Name="Day_Workout" Relationship="Self.FK__Day_Worko__Exerc__5629CD9C" FromRole="Exercise_Plan_Day" ToRole="Day_Workout" />
+    <NavigationProperty Name="Exercise_Plan" Relationship="Self.FK__Exercise___Exerc__3E52440B" FromRole="Exercise_Plan_Day" ToRole="Exercise_Plan" />
+  </EntityType>
+  <EntityType Name="Exercise_Plan_Type">
+    <Key>
+      <PropertyRef Name="Exercise_Plan_Type_ID" />
+    </Key>
+    <Property Name="Exercise_Plan_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Plan_Type_Description" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Plan_Type_Price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Exercise_Plan" Relationship="Self.FK__Exercise___Exerc__398D8EEE" FromRole="Exercise_Plan_Type" ToRole="Exercise_Plan" />
+  </EntityType>
+  <EntityType Name="Exercise_Set">
+    <Key>
+      <PropertyRef Name="Exercise_Set_ID" />
+    </Key>
+    <Property Name="Exercise_Set_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REP" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Exercise_ID" Type="Int32" Nullable="false" />
+    <Property Name="Set_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Exercise" Relationship="Self.FK__Exercise___Exerc__4D94879B" FromRole="Exercise_Set" ToRole="Exercise" />
+    <NavigationProperty Name="Set" Relationship="Self.FK__Exercise___Set_I__4E88ABD4" FromRole="Exercise_Set" ToRole="Set" />
+    <NavigationProperty Name="Workout_Set" Relationship="Self.FK__Workout_S__Exerc__52593CB8" FromRole="Exercise_Set" ToRole="Workout_Set" />
+  </EntityType>
+  <EntityType Name="Exercise_Type">
+    <Key>
+      <PropertyRef Name="Exercise_Type_ID" />
+    </Key>
+    <Property Name="Exercise_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Exercise_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Exercises" Relationship="Self.FK__Exercise__Exerci__47DBAE45" FromRole="Exercise_Type" ToRole="Exercise" />
+  </EntityType>
+  <EntityType Name="Set">
+    <Key>
+      <PropertyRef Name="Set_ID" />
+    </Key>
+    <Property Name="Set_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Set_Name" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Exercise_Set" Relationship="Self.FK__Exercise___Set_I__4E88ABD4" FromRole="Set" ToRole="Exercise_Set" />
+  </EntityType>
+  <EntityType Name="Workout">
+    <Key>
+      <PropertyRef Name="Workout_ID" />
+    </Key>
+    <Property Name="Workout_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Workout_Number" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Workout_Set" Relationship="Self.FK__Workout_S__Worko__5165187F" FromRole="Workout" ToRole="Workout_Set" />
+  </EntityType>
+  <EntityType Name="Workout_Set">
+    <Key>
+      <PropertyRef Name="Workout_Set_ID" />
+    </Key>
+    <Property Name="Workout_Set_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Workout_ID" Type="Int32" Nullable="false" />
+    <Property Name="Exercise_Set_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Day_Workout" Relationship="Self.FK__Day_Worko__Worko__5535A963" FromRole="Workout_Set" ToRole="Day_Workout" />
+    <NavigationProperty Name="Exercise_Set" Relationship="Self.FK__Workout_S__Exerc__52593CB8" FromRole="Workout_Set" ToRole="Exercise_Set" />
+    <NavigationProperty Name="Workout" Relationship="Self.FK__Workout_S__Worko__5165187F" FromRole="Workout_Set" ToRole="Workout" />
+  </EntityType>
+  <Association Name="FK__Exercise___Day_I__3F466844">
+    <End Role="Day" Type="Self.Day" Multiplicity="1" />
+    <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="Day_ID" />
+      </Principal>
+      <Dependent Role="Exercise_Plan_Day">
+        <PropertyRef Name="Day_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Day_Worko__Exerc__5629CD9C">
+    <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="1" />
+    <End Role="Day_Workout" Type="Self.Day_Workout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercise_Plan_Day">
+        <PropertyRef Name="Exercise_Plan_Day_ID" />
+      </Principal>
+      <Dependent Role="Day_Workout">
+        <PropertyRef Name="Exercise_Plan_Day_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Day_Worko__Worko__5535A963">
+    <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="1" />
+    <End Role="Day_Workout" Type="Self.Day_Workout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workout_Set">
+        <PropertyRef Name="Workout_Set_ID" />
+      </Principal>
+      <Dependent Role="Day_Workout">
+        <PropertyRef Name="Workout_Set_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exercise___Exerc__4D94879B">
+    <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+    <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercise">
+        <PropertyRef Name="Exercise_ID" />
+      </Principal>
+      <Dependent Role="Exercise_Set">
+        <PropertyRef Name="Exercise_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exercise__Exerci__47DBAE45">
+    <End Role="Exercise_Type" Type="Self.Exercise_Type" Multiplicity="1" />
+    <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercise_Type">
+        <PropertyRef Name="Exercise_Type_ID" />
+      </Principal>
+      <Dependent Role="Exercise">
+        <PropertyRef Name="Exercise_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exercise__Exerci__48CFD27E">
+    <End Role="Exercise_Body_Type" Type="Self.Exercise_Body_Type" Multiplicity="1" />
+    <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercise_Body_Type">
+        <PropertyRef Name="Exercise_Body_Type_ID" />
+      </Principal>
+      <Dependent Role="Exercise">
+        <PropertyRef Name="Exercise_Body_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exercise___Exerc__398D8EEE">
+    <End Role="Exercise_Plan_Type" Type="Self.Exercise_Plan_Type" Multiplicity="0..1" />
+    <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercise_Plan_Type">
+        <PropertyRef Name="Exercise_Plan_Type_ID" />
+      </Principal>
+      <Dependent Role="Exercise_Plan">
+        <PropertyRef Name="Exercise_Plan_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exercise___Exerc__3E52440B">
+    <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+    <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercise_Plan">
+        <PropertyRef Name="Exercise_Plan_ID" />
+      </Principal>
+      <Dependent Role="Exercise_Plan_Day">
+        <PropertyRef Name="Exercise_Plan_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exercise___Set_I__4E88ABD4">
+    <End Role="Set" Type="Self.Set" Multiplicity="1" />
+    <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Set">
+        <PropertyRef Name="Set_ID" />
+      </Principal>
+      <Dependent Role="Exercise_Set">
+        <PropertyRef Name="Set_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Workout_S__Exerc__52593CB8">
+    <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="1" />
+    <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercise_Set">
+        <PropertyRef Name="Exercise_Set_ID" />
+      </Principal>
+      <Dependent Role="Workout_Set">
+        <PropertyRef Name="Exercise_Set_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Workout_S__Worko__5165187F">
+    <End Role="Workout" Type="Self.Workout" Multiplicity="1" />
+    <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workout">
+        <PropertyRef Name="Workout_ID" />
+      </Principal>
+      <Dependent Role="Workout_Set">
+        <PropertyRef Name="Workout_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExercisePlanDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Days" EntityType="Self.Day" />
+    <EntitySet Name="Day_Workout" EntityType="Self.Day_Workout" />
+    <EntitySet Name="Exercises" EntityType="Self.Exercise" />
+    <EntitySet Name="Exercise_Body_Type" EntityType="Self.Exercise_Body_Type" />
+    <EntitySet Name="Exercise_Plan" EntityType="Self.Exercise_Plan" />
+    <EntitySet Name="Exercise_Plan_Day" EntityType="Self.Exercise_Plan_Day" />
+    <EntitySet Name="Exercise_Plan_Type" EntityType="Self.Exercise_Plan_Type" />
+    <EntitySet Name="Exercise_Set" EntityType="Self.Exercise_Set" />
+    <EntitySet Name="Exercise_Type" EntityType="Self.Exercise_Type" />
+    <EntitySet Name="Sets" EntityType="Self.Set" />
+    <EntitySet Name="Workouts" EntityType="Self.Workout" />
+    <EntitySet Name="Workout_Set" EntityType="Self.Workout_Set" />
+    <AssociationSet Name="FK__Exercise___Day_I__3F466844" Association="Self.FK__Exercise___Day_I__3F466844">
+      <End Role="Day" EntitySet="Days" />
+      <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Day_Worko__Exerc__5629CD9C" Association="Self.FK__Day_Worko__Exerc__5629CD9C">
+      <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+      <End Role="Day_Workout" EntitySet="Day_Workout" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Day_Worko__Worko__5535A963" Association="Self.FK__Day_Worko__Worko__5535A963">
+      <End Role="Workout_Set" EntitySet="Workout_Set" />
+      <End Role="Day_Workout" EntitySet="Day_Workout" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exercise___Exerc__4D94879B" Association="Self.FK__Exercise___Exerc__4D94879B">
+      <End Role="Exercise" EntitySet="Exercises" />
+      <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exercise__Exerci__47DBAE45" Association="Self.FK__Exercise__Exerci__47DBAE45">
+      <End Role="Exercise_Type" EntitySet="Exercise_Type" />
+      <End Role="Exercise" EntitySet="Exercises" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exercise__Exerci__48CFD27E" Association="Self.FK__Exercise__Exerci__48CFD27E">
+      <End Role="Exercise_Body_Type" EntitySet="Exercise_Body_Type" />
+      <End Role="Exercise" EntitySet="Exercises" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exercise___Exerc__398D8EEE" Association="Self.FK__Exercise___Exerc__398D8EEE">
+      <End Role="Exercise_Plan_Type" EntitySet="Exercise_Plan_Type" />
+      <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exercise___Exerc__3E52440B" Association="Self.FK__Exercise___Exerc__3E52440B">
+      <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+      <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exercise___Set_I__4E88ABD4" Association="Self.FK__Exercise___Set_I__4E88ABD4">
+      <End Role="Set" EntitySet="Sets" />
+      <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Workout_S__Exerc__52593CB8" Association="Self.FK__Workout_S__Exerc__52593CB8">
+      <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+      <End Role="Workout_Set" EntitySet="Workout_Set" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Workout_S__Worko__5165187F" Association="Self.FK__Workout_S__Worko__5165187F">
+      <End Role="Workout" EntitySet="Workouts" />
+      <End Role="Workout_Set" EntitySet="Workout_Set" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
